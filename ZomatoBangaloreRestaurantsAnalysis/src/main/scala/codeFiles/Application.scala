@@ -74,6 +74,16 @@ object Application {
     val df_reviews = spark.read.parquet(path_for_review_dataset)
     
     cleaned_df.persist()
+    
+    cleaned_df.persist()
+    //task 1.1 - remove non ascii characters from dataset 
+    val df_ascii = RemoveNonAscii.removeNonAsciiFromDataFrame(cleaned_df)
+    
+    //task 1.2 - Remove restaurant with no ratings
+    val df_rating = df_ascii.na.drop(Array("rate"))
+    
+    cleaned_df.unpersist()
+    df_rating.persist()
 
     spark.close()
   }
