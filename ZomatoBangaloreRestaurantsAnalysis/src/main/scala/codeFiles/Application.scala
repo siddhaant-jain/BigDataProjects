@@ -84,6 +84,14 @@ object Application {
     
     cleaned_df.unpersist()
     df_rating.persist()
+    
+    //task 2.1 - filter closed restaurants
+    val df_inactive = FilterClosedResturants.filterInactiveRestuarantsDataFrame(df_rating, true)
+    val df_active = FilterClosedResturants.filterInactiveRestuarantsDataFrame(df_rating, false)
+    df_rating.unpersist()
+    df_active.persist()
+//    df_active.show()
+
 
     spark.close()
   }
