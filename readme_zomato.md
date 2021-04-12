@@ -24,7 +24,6 @@ mostly vegetarian. These kind of analysis can be done using the data, by studyin
 • Is a particular neighborhood famous for its own kind of food.
 	
 ## To run this project:
-
 1. Dataset
 	* Dowload the dataset from the link: [Zomato Dataset](https://www.kaggle.com/himanshupoddar/zomato-bangalore-restaurants)
 	* Extract it and paste in resources folder
@@ -34,4 +33,22 @@ mostly vegetarian. These kind of analysis can be done using the data, by studyin
 3. Make changes to **createSparkSession** function in **Application.scala** file if you're running on cloud
 4. To run kafka task, you should have zookeeper and server running
 
-*** resources folder contains snapshot of outputs
+## Tasks performed in this project
+* Convert the data to parquet
+* Tasks
+	1. clean up :
+		* Remove all non-ascii characters from all columns : Name, Location etc
+		* Remove restaurants with no ratings.
+	2. From the dataset:
+		1. Filter out records which have invalid restaurant links (use regex to take main part of the url) – which means that the restaurant is most probably closed now.
+		2. Group by Address location for the closed restaurants and find out which area has the most restaurants getting closed.
+		3. For active restaurants, group by restaurant type and location and find out the restaurants which have highest rating for each cuisine type.
+		4. For the reviews list column, find the distribution of star rating, on the condition that there are -at-least 30 ratings for that restaurant.
+		5. Group by location for individual cost buckets (for 2 people) : [<=300, 300-500, 500-800, >= 800] and take the 5 highest rated restaurants in each location and each cost bucket and save as parquet file.
+		6. For active restaurants, publish the data into individual kafka topics based on location.
+* Use funsuite or scalatest to test functionality in local with multiple test cases with sample data.
+
+
+
+
+** resources folder contains snapshot of outputs **
