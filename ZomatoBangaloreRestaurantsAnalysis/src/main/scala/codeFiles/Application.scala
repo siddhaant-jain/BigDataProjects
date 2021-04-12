@@ -135,10 +135,6 @@ object Application {
     
     //task 2.6 publish open restaurants to kafka
     PublishActiveRestuarants.activeRestProducer(df_active, spark)
-
-
-
-
     spark.close()
   }
 
