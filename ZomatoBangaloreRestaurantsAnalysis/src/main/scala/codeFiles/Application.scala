@@ -40,17 +40,17 @@ object Application {
     
     val path_for_parquet_file: String = pathProperty.getProperty("costBucketPath")
     
-//    CreateNewDatasets.deleteExistingFiles(path_for_cleaned_dataset_temp, path_for_review_dataset_temp)
-//    CreateNewDatasets.deleteExistingDirectory(path_for_cleaned_dataset, path_for_parquet_file, path_for_review_dataset)    
+    CreateNewDatasets.deleteExistingFiles(path_for_cleaned_dataset_temp, path_for_review_dataset_temp)
+    CreateNewDatasets.deleteExistingDirectory(path_for_cleaned_dataset, path_for_parquet_file, path_for_review_dataset)
     //import actual zomato dataset
     val original_df = getDataframeFromCsv(path_of_original_dataset, spark)
 //    original_df.show()
     
-//    //create new datasets
-//    if(!CreateNewDatasets.createDataset(path_of_original_dataset, path_for_cleaned_dataset_temp, path_for_review_dataset_temp)){
-//      println("files could not be created")
-//      return
-//    }
+    //create new datasets
+    if(!CreateNewDatasets.createDataset(path_of_original_dataset, path_for_cleaned_dataset_temp, path_for_review_dataset_temp)){
+      println("files could not be created")
+      return
+    }
     
     //read dataset without review and save to parquet file
     val cleaned_df_temp = getDataframeFromCsv(path_for_cleaned_dataset_temp , spark)
