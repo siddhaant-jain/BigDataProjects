@@ -130,11 +130,11 @@ object Application {
           
     val df_loc_costBucket = CreatePriceBuckets.locationBucketTop5(df_buckets)
 //    df_loc_costBucket.write.mode(SaveMode.Overwrite).parquet(path_for_parquet_file)
-    df_loc_costBucket.show()
+//    df_loc_costBucket.show()
     
     
     //task 2.6 publish open restaurants to kafka
-//    PublishActiveRestuarants.activeRestProducer(df_active, spark)
+    PublishActiveRestuarants.activeRestProducer(df_active, spark)
 
 
 

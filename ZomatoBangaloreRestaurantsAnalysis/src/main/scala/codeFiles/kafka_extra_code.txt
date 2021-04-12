@@ -1,0 +1,48 @@
+//   case class Record(location: String, msg:String)
+
+//    val producerProp = new Properties()
+//		producerProp.put("bootstrap.servers", "localhost:9092")
+//		producerProp.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+//		producerProp.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+//		
+//		val producer: KafkaProducer[String, String] = new KafkaProducer[String, String](producerProp)
+//		val dfrdd = df.rdd.map(row => {
+//		  val location: String = row(8).toString()
+//		  val msg = row.getString(0)
+//		  Record(location, msg)
+//		})
+//		
+//		dfrdd.foreachPartition((partitions: Iterator[Record]) => {
+//		  partitions.foreach((record: Record) => {
+//		    val dataToSend = new ProducerRecord[String, String]("Zomato Blore open restaurants",record.location,record.msg)
+//		    producer.send(dataToSend)
+//		  })
+//		})
+
+
+//		df.foreachPartition(f => {
+//		  f.foreach(g => {
+//		    val dataToSend = new ProducerRecord[String, String]("Zomato Blore open restaurants",g(8).toString() ,g.getString(0))
+//		    producer.send(dataToSend)
+//		  })
+//		})
+
+
+//		val adminClient = AdminClient.create(producerProp);
+//    val topicList = new ArrayList[NewTopic]()
+//    val i: Short = 1
+//    active_restaurants.select("location").distinct().collect().foreach(f => {
+//      println(f.toString())
+//      val topicList = new ArrayList[NewTopic]()
+//      topicList.add(new NewTopic(f.toString(), 1, i))
+//      adminClient.createTopics(topicList)
+//      }
+//    )
+//    //topicList.append(f.toString()))
+//      
+//    
+//    val a = asScalaSet(adminClient.listTopics().names().get())
+//    a.foreach(f => println)
+//    adminClient.close()
+//    val stringudf = udf((loc1: String) => loc1.toString())
+//filter(p => (p>=65 && p<=90)||(p>=97&&p<=122)||(p>=48&&p<=57)||p==95||p==46||p==45)
