@@ -60,9 +60,9 @@ object Application {
     val df_reviews_temp = getDataframeFromCsv(path_for_review_dataset_temp , spark)
     
     //51716 records
-//    val x = cleaned_df_temp.select("*").count()
-//    val y = df_reviews_temp.select("*").count()
-//    println("total records in cleaned dataset without review column: " + x + " total records in review dataset: " + y)
+    val x = cleaned_df_temp.select("*").count()
+    val y = df_reviews_temp.select("*").count()
+    println("total records in cleaned dataset without review column: " + x + " total records in review dataset: " + y)
     
     cleaned_df_temp.withColumnRenamed("approx_cost(for two people)","approx_cost_for_two_people")
                    .withColumnRenamed("listed_in(type)","listed_in_type")
